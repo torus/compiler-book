@@ -1,0 +1,7 @@
+(* -*- mode: sml -*- *)
+_require "basis.smi"
+_require "../readString/ReadString.smi"
+structure Top =
+struct
+  val top : string -> unit
+end
