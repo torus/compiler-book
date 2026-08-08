@@ -11,4 +11,8 @@ struct
          TextIO.closeIn inStream
       end
       handle ReadString.EOF => ()
+
+  fun topStdin () =
+      readAndPrintLoop TextIO.stdIn
+      handle ReadString.EOF => ()
 end
