@@ -17,7 +17,9 @@ struct
   fun exec delta (q, tape as (LList, h, RList)) =
       case List.find (fn (x,y) => x = (q, h)) delta of
           NONE => (LList, h, RList)
-        | SOME (x, (q', s, d)) =>
-          exec delta (q', move d (LList, s, RList))
+        | SOME (x, (q', TM.Move d)) =>
+          exec delta (q', move d tape)
+        | SOME (x, (q', TM.Write s)) =>
+          exec delta (q', (LList, s, RList))
   fun eval (state, delta) tape = exec delta (state, tape)
 end
