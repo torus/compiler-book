@@ -3,6 +3,9 @@ SMLFLAGS = -O2
 LIBS =
 all: Main
 
+run: Main
+	./Main
+
 clean:
 	rm -f Main *.o *~
 

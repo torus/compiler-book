@@ -4,7 +4,7 @@ structure TM =
 struct
   datatype D = R | L
   datatype S = B | I | O
-  datatype Q = M | H
+  datatype Q = M | H | A | AA
   type delta = ((Q * S) * (Q * S * D)) list
   type program = Q * delta
   type tape = S list * S * S list
