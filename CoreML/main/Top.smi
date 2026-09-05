@@ -1,8 +1,8 @@
 (* -*- mode: sml -*- *)
 _require "basis.smi"
-_require "../readString/ReadString.smi"
+_require "../lex/Token.smi"
+_require "../lex/Lexer.smi"
 structure Top =
 struct
   val top : string -> unit
-  val topStdin : unit -> unit
 end
