@@ -1,3 +1,5 @@
+.SUFFIXES:
+
 CoreML.lex.sml: CoreML.lex
 	smllex $^
 
