@@ -1,3 +1,5 @@
+all-lex: lex all
+
 lex:
 	$(MAKE) -C ../lex
 
