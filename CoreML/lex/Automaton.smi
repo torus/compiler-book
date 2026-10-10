@@ -1,0 +1,16 @@
+(* -*- mode: sml -*- *)
+_require "basis.smi"
+structure Automaton =
+struct
+  type S = string
+  type Q = int
+  type delta = (Q * (S * Q list) list) list
+  type NFA = {Q:Q list, S:S list, delta:delta, q0:Q,
+              F:Q list}
+  type state = Q list
+  type Delta = (state * (S * state) list) list
+  type DFA = {Q:state list, S:S list, Delta:Delta,
+              Q0:state, F:state list}
+  val epsilon : S
+  val toDFA : NFA -> DFA
+end

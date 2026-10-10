@@ -97,7 +97,7 @@ Main: /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/VECTOR_SLICE.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/WORD.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis.smi ../lex/Token.smi \
- ../lex/CoreML.lex.smi ../lex/Lexer.smi Top.smi Main.smi \
+ ../lex/Automaton.smi ../lex/CoreMLLex.smi ../lex/Lexer.smi Top.smi Main.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.o \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/StringCvt.o \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/IEEEReal.o \
@@ -151,7 +151,7 @@ Main: /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word32.o \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word64.o \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/toplevel.o ../lex/Token.o \
- ../lex/CoreML.lex.o ../lex/Lexer.o Top.o Main.o
+ ../lex/Automaton.o ../lex/CoreMLLex.o ../lex/Lexer.o Top.o Main.o
 	$(SMLSHARP) $(LDFLAGS) -o Main Main.smi $(LIBS)
 ../lex/Token.o: ../lex/Token.sml \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
@@ -250,7 +250,104 @@ Main: /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/WORD.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis.smi ../lex/Token.smi
 	$(SMLSHARP) $(SMLFLAGS) -o ../lex/Token.o -c ../lex/Token.sml
-../lex/CoreML.lex.o: ../lex/CoreML.lex.sml \
+../lex/Automaton.o: ../lex/Automaton.sml \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/StringCvt.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/IEEEReal.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Real64.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/IntInf.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Time.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Int8.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Int16.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Int32.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word8VectorSlice.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word8ArraySlice.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Substring.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Array.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/VectorSlice.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/ArraySlice.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word8Vector.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/IO.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word8Array.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/SMLSharp_OSIO.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/SMLSharp_OSFileSys.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/SMLSharp_OSProcess.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/SMLSharp_Runtime.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/smlnj/Basis/OS/os-path-fn.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/smlnj/Basis/Unix/os-path.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/OS.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/smlnj/Basis/IO/prim-io-bin.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/smlnj/Basis/IO/bin-io.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Bool.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Byte.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/CharArray.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/CharVectorSlice.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/CharArraySlice.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/SMLSharp_ScanChar.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Char.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/CharVector.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/CommandLine.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/smlnj/Basis/date.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/List.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/ListPair.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Option.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Real32.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Int64.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/String.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/smlnj/Basis/IO/prim-io-text.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/smlnj/Basis/IO/text-io.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Text.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Timer.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Vector.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word8.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word16.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word32.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/Word64.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/toplevel.smi \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/ARRAY.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/ARRAY_SLICE.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/STREAM_IO.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/IMPERATIVE_IO.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/BIN_IO.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/BOOL.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/BYTE.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/CHAR.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/COMMAND_LINE.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/DATE.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/GENERAL.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/IEEE_REAL.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/INTEGER.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/INT_INF.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/IO.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/LIST.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/LIST_PAIR.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/MATH.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/MONO_ARRAY.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/MONO_ARRAY_SLICE.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/MONO_VECTOR.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/MONO_VECTOR_SLICE.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/OPTION.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/OS_FILE_SYS.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/OS_IO.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/OS_PATH.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/OS_PROCESS.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/OS.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/PRIM_IO.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/REAL.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/STRING.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/STRING_CVT.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/SUBSTRING.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/TEXT_STREAM_IO.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/TEXT_IO.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/TEXT.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/TIME.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/TIMER.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/VECTOR.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/VECTOR_SLICE.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/WORD.sig \
+ /usr/lib/x86_64-linux-gnu/smlsharp/basis.smi ../lex/Automaton.smi
+	$(SMLSHARP) $(SMLFLAGS) -o ../lex/Automaton.o -c ../lex/Automaton.sml
+../lex/CoreMLLex.o: ../lex/CoreMLLex.sml \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/StringCvt.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/IEEEReal.smi \
@@ -346,8 +443,8 @@ Main: /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/VECTOR_SLICE.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/WORD.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis.smi ../lex/Token.smi \
- ../lex/CoreML.lex.smi
-	$(SMLSHARP) $(SMLFLAGS) -o ../lex/CoreML.lex.o -c ../lex/CoreML.lex.sml
+ ../lex/Automaton.smi ../lex/CoreMLLex.smi
+	$(SMLSHARP) $(SMLFLAGS) -o ../lex/CoreMLLex.o -c ../lex/CoreMLLex.sml
 ../lex/Lexer.o: ../lex/Lexer.sml \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/StringCvt.smi \
@@ -444,7 +541,7 @@ Main: /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/VECTOR_SLICE.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/WORD.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis.smi ../lex/Token.smi \
- ../lex/CoreML.lex.smi ../lex/Lexer.smi
+ ../lex/Automaton.smi ../lex/CoreMLLex.smi ../lex/Lexer.smi
 	$(SMLSHARP) $(SMLFLAGS) -o ../lex/Lexer.o -c ../lex/Lexer.sml
 Top.o: Top.sml /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/StringCvt.smi \
@@ -541,7 +638,7 @@ Top.o: Top.sml /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/VECTOR_SLICE.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/WORD.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis.smi ../lex/Token.smi \
- ../lex/CoreML.lex.smi ../lex/Lexer.smi Top.smi
+ ../lex/Automaton.smi ../lex/CoreMLLex.smi ../lex/Lexer.smi Top.smi
 	$(SMLSHARP) $(SMLFLAGS) -o Top.o -c Top.sml
 Main.o: Main.sml /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/StringCvt.smi \
@@ -638,5 +735,5 @@ Main.o: Main.sml /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/General.smi \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/VECTOR_SLICE.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis/main/WORD.sig \
  /usr/lib/x86_64-linux-gnu/smlsharp/basis.smi ../lex/Token.smi \
- ../lex/CoreML.lex.smi ../lex/Lexer.smi Top.smi Main.smi
+ ../lex/Automaton.smi ../lex/CoreMLLex.smi ../lex/Lexer.smi Top.smi Main.smi
 	$(SMLSHARP) $(SMLFLAGS) -o Main.o -c Main.sml
