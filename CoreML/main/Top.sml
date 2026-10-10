@@ -1,6 +1,6 @@
 structure Top =
 struct
-fun readAndPrintLoop inStream =
+fun readAndPrintLoop lexer =
     let
         val token = lexer()
         val _ = print (Token.toString token ^ "\n")
@@ -16,5 +16,9 @@ fun readAndPrintLoop inStream =
           readAndPrintLoop lexer;
           TextIO.closeIn inStream
       end
+      handle Lexer.EOF => ()
+
+  fun topStdin () =
+      readAndPrintLoop (Lexer.makeLexer TextIO.stdIn)
       handle Lexer.EOF => ()
 end

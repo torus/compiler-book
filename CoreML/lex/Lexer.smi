@@ -1,7 +1,7 @@
 (* -*- mode: sml -*- *)
-_requre "basis.smi"
-_requre "./Token.smi"
-_requre "./CoreML.lex.smi"
+_require "basis.smi"
+_require "./Token.smi"
+_require "./CoreML.lex.smi"
 structure Lexer =
 struct
   exception EOF

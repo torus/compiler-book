@@ -5,4 +5,5 @@ _require "../lex/Lexer.smi"
 structure Top =
 struct
   val top : string -> unit
+  val topStdin : unit -> unit
 end

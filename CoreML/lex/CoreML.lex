@@ -1,3 +1,7 @@
+type lexresult = Token.token
+val eof = fun () => Token.EOF
+fun atoi s = valOf (Int.fromString s)
+
 %%
 
 %structure CoreMLLex
@@ -12,3 +16,11 @@ ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
 
 %%
 
+\"[^"]*\" => (Token.STRING
+              (String.substring
+                 (yytext,1,String.size yytext - 2)));
+"_" => (Token.UNDERBAR);
+{id} => (Token.ID yytext);
+{real} => (Token.REAL yytext);
+{ws} => (lex());
+. => (Token.SPECIAL yytext);

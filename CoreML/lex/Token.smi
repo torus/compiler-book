@@ -1,5 +1,5 @@
 (* -*- mode: sml -*- *)
-_requre "basis.smi"
+_require "basis.smi"
 structure Token =
 struct
   datatype token
