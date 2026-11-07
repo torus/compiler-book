@@ -3,7 +3,7 @@ struct
   datatype token
     = EOF | UNDERBAR | ID of string | STRING of string
       | REAL of string | INT of string | SPECIAL of string
-      | CONSTINT of string | SYMBOL of string
+      | CONSTINT of string
       | KW_ANDALSO
       | KW_AND
       | KW_AS
@@ -32,8 +32,16 @@ struct
       | KW_USE
       | KW_VAL
       | KW_WHILE
-      | SYM_EQ
+      | SYM_COMMA
+      | SYM_DOTS
+      | SYM_PERIOD
+      | SYM_COLON
       | SYM_SEMICOLON
+      | SYM_DARROW
+      | SYM_EQ
+      | SYM_LBRACKET
+      | SYM_RBRACKET
+      | SYM_BAR
   fun toString token =
       case token of
         EOF => "EOF"
@@ -72,7 +80,14 @@ struct
       | KW_USE => "USE"
       | KW_VAL => "VAL"
       | KW_WHILE => "WHILE"
-      | SYMBOL s => "SYMBOL " ^ s
-      | SYM_EQ => "EQ"
+      | SYM_COMMA => "COMMA"
+      | SYM_DOTS => "DOTS"
+      | SYM_PERIOD => "PERIOD"
+      | SYM_COLON => "COLON"
       | SYM_SEMICOLON => "SEMICOLON"
+      | SYM_DARROW => "DARROW"
+      | SYM_EQ => "EQ"
+      | SYM_LBRACKET => "LBRACKET"
+      | SYM_RBRACKET => "RBRACKET"
+      | SYM_BAR => "BAR"
 end

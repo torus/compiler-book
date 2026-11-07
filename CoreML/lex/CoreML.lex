@@ -13,9 +13,6 @@ frac  = "."{num};
 exp   = [eE](~?){num};
 real  = (~?)(({num}{frac}?{exp})|({num}{frac}{exp}?));
 integer = (~?){num};
-symbol = "," | "." | "..." | ":" | "=>" | "[" | "]" | "|";
-sym_eq = "=";
-sym_semicolon = ";";
 ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
 
 %%
@@ -56,9 +53,16 @@ ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
 {real} => (Token.REAL yytext);
 {num} => (Token.CONSTINT yytext);
 {integer} => (Token.INT yytext);
-{symbol} => (Token.SYMBOL yytext);
-{sym_eq} => (Token.SYM_EQ);
-{sym_semicolon} => (Token.SYM_SEMICOLON);
+"," => (Token.SYM_COMMA);
+"..." => (Token.SYM_DOTS);
+"." => (Token.SYM_PERIOD);
+":" => (Token.SYM_COLON);
+";" => (Token.SYM_SEMICOLON);
+"=>" => (Token.SYM_DARROW);
+"=" => (Token.SYM_EQ);
+"[" => (Token.SYM_LBRACKET);
+"]" => (Token.SYM_RBRACKET);
+"|" => (Token.SYM_BAR);
 
 {ws} => (lex());
 . => (Token.SPECIAL yytext);
