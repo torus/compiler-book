@@ -32,14 +32,14 @@ ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
                  (yytext,1,String.size yytext - 2)));
 "_" => (Token.UNDERBAR);
 {keyword} => (Token.KEYWORD yytext);
-{kw_val} => (Token.KW_VAL yytext);
+{kw_val} => (Token.KW_VAL);
 {id} => (Token.ID yytext);
 {real} => (Token.REAL yytext);
 {num} => (Token.CONSTINT yytext);
 {integer} => (Token.INT yytext);
 {symbol} => (Token.SYMBOL yytext);
-{sym_eq} => (Token.SYM_EQ yytext);
-{sym_semicolon} => (Token.SYM_SEMICOLON yytext);
+{sym_eq} => (Token.SYM_EQ);
+{sym_semicolon} => (Token.SYM_SEMICOLON);
 
 {ws} => (lex());
 . => (Token.SPECIAL yytext);
