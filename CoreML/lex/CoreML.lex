@@ -13,13 +13,6 @@ frac  = "."{num};
 exp   = [eE](~?){num};
 real  = (~?)(({num}{frac}?{exp})|({num}{frac}{exp}?));
 integer = (~?){num};
-keyword = "andalso" | "and" | "as" | "case" | "do" | "end" | "exception" | "fn"
-  | "fun" | "handle" | "if" | "in" | "infix" | "infixr" | "nonfix" | "let"
-  | "local" | "of" | "op" | "open" | "orelse" | "raise" | "rec" | "then" | "use"
-  | "while";
-
-kw_val = "val";
-
 symbol = "," | "." | "..." | ":" | "=>" | "[" | "]" | "|";
 sym_eq = "=";
 sym_semicolon = ";";
@@ -31,8 +24,34 @@ ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
               (String.substring
                  (yytext,1,String.size yytext - 2)));
 "_" => (Token.UNDERBAR);
-{keyword} => (Token.KEYWORD yytext);
-{kw_val} => (Token.KW_VAL);
+"andalso" => (Token.KW_ANDALSO);
+"and" => (Token.KW_AND);
+"as" => (Token.KW_AS);
+"case" => (Token.KW_CASE);
+"do" => (Token.KW_DO);
+"else" => (Token.KW_ELSE);
+"end" => (Token.KW_END);
+"exception" => (Token.KW_EXCEPTION);
+"fn" => (Token.KW_FN);
+"fun" => (Token.KW_FUN);
+"handle" => (Token.KW_HANDLE);
+"if" => (Token.KW_IF);
+"in" => (Token.KW_IN);
+"infix" => (Token.KW_INFIX);
+"infixr" => (Token.KW_INFIXR);
+"nonfix" => (Token.KW_NONFIX);
+"let" => (Token.KW_LET);
+"local" => (Token.KW_LOCAL);
+"of" => (Token.KW_OF);
+"op" => (Token.KW_OP);
+"open" => (Token.KW_OPEN);
+"orelse" => (Token.KW_ORELSE);
+"raise" => (Token.KW_RAISE);
+"rec" => (Token.KW_REC);
+"then" => (Token.KW_THEN);
+"use" => (Token.KW_USE);
+"val" => (Token.KW_VAL);
+"while" => (Token.KW_WHILE);
 {id} => (Token.ID yytext);
 {real} => (Token.REAL yytext);
 {num} => (Token.CONSTINT yytext);
