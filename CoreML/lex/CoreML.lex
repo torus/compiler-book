@@ -12,6 +12,7 @@ num   = {digit}+;
 frac  = "."{num};
 exp   = [eE](~?){num};
 real  = (~?)(({num}{frac}?{exp})|({num}{frac}{exp}?));
+integer = (~?){num};
 keyword = "andalso" | "and" | "as" | "case" | "do" | "end" | "exception" | "fn"
   | "fun" | "handle" | "if" | "in" | "infix" | "infixr" | "nonfix" | "let"
   | "local" | "of" | "op" | "open" | "orelse" | "raise" | "rec" | "then" | "use"
@@ -27,6 +28,7 @@ ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
 "_" => (Token.UNDERBAR);
 {id} => (Token.ID yytext);
 {real} => (Token.REAL yytext);
+{integer} => (Token.INT yytext);
 {num} => (Token.CONSTINT yytext);
 {keyword} => (Token.KEYWORD yytext);
 {symbol} => (Token.SYMBOL yytext);
