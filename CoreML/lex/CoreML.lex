@@ -20,7 +20,7 @@ keyword = "andalso" | "and" | "as" | "case" | "do" | "end" | "exception" | "fn"
 
 kw_val = "val";
 
-symbol = "," | "." | "..." | ":" | "=>" | "[" | "]" | "_" | "|";
+symbol = "," | "." | "..." | ":" | "=>" | "[" | "]" | "|";
 sym_eq = "=";
 sym_semicolon = ";";
 ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
@@ -35,8 +35,8 @@ ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
 {kw_val} => (Token.KW_VAL yytext);
 {id} => (Token.ID yytext);
 {real} => (Token.REAL yytext);
-{integer} => (Token.INT yytext);
 {num} => (Token.CONSTINT yytext);
+{integer} => (Token.INT yytext);
 {symbol} => (Token.SYMBOL yytext);
 {sym_eq} => (Token.SYM_EQ yytext);
 {sym_semicolon} => (Token.SYM_SEMICOLON yytext);
